@@ -93,11 +93,11 @@ body {
   overflow-x: hidden;
 }
 
-body {
+/* body {
   color: var(--color-black-1);
   background: var(--color-bg);
   font-family: var(--font-basier);
-}
+} */
 
 a {
   color: inherit;
