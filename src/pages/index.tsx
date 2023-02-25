@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main>
-        DEMO Singapore Hotel
+        Dashboard
       </main>
     </>
   )

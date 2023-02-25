@@ -3,6 +3,8 @@ import React from 'react'
 import { MdPerson, MdArrowDropDown } from "react-icons/md"
 import { GrPowerShutdown } from "react-icons/gr"
 import { IoSwapHorizontal } from "react-icons/io5"
+import Link from 'next/link'
+import NavLink from '../NavLink'
 
 const Navbar: React.FC = () => {
   return (
@@ -13,56 +15,34 @@ const Navbar: React.FC = () => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Flex columnGap="25px">
-        <Text
-          fontSize="25px"
-          color="#333333"
-        >
-          DEMO Singapore Hotel 
-        </Text>
+      <Flex columnGap="40px">
+        <Link href="/">
+          <Text
+            fontSize="25px"
+            color="#333333"
+          >
+            DEMO Singapore Hotel 
+          </Text>
+        </Link>
 
         <Flex alignItems="center">
+          <NavLink href="/">Dashboard</NavLink>
+          <NavLink href="/rooms">Rooms</NavLink>
+          <NavLink href="/schedule">Schedule</NavLink>
+          <NavLink href="/report">Report</NavLink>
+          
           <Box
             paddingX="15px"
             fontSize="18px"
-            fontWeight={500}
-            color="blue"
-            borderBottom="2px solid blue"
+            fontWeight={400}
+            color="black4"
           >
-            Dashboard
+            Settings
           </Box>
-          <Box
-            paddingX="15px"
-            fontSize="18px"
-            fontWeight={400}
-            color="black4"
-          >
-            Rooms</Box>
-          <Box
-            paddingX="15px"
-            fontSize="18px"
-            fontWeight={400}
-            color="black4"
-          >
-            Schedule</Box>
-          <Box
-            paddingX="15px"
-            fontSize="18px"
-            fontWeight={400}
-            color="black4"
-          >
-            Report</Box>
-          <Box
-            paddingX="15px"
-            fontSize="18px"
-            fontWeight={400}
-            color="black4"
-          >
-            Settings</Box>
         </Flex>
       </Flex>
 
-      <Flex>
+      <Flex columnGap="15px">
         <Button
           fontSize="16px"
           color="blue"
@@ -75,7 +55,6 @@ const Navbar: React.FC = () => {
           <MenuButton
             as={Button}
             leftIcon={<MdPerson size="24px" />}
-            paddingX="15px"
             fontSize="18px"
             color="black5"
           >
