@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 const useLoginForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -17,8 +18,9 @@ const useLoginForm = () => {
     e.preventDefault();
     
     try {
-      const HOST: string = process.env.NEXT_PUBLIC_HOST || "http://localhost:3000";
-      const URL: string = HOST + "/api/login";
+      setIsLoading(true);
+      const HOST: string = process.env.NEXT_PUBLIC_API || "http://localhost/index.php";
+      const URL: string = HOST + "/auth/login";
 
       const formData = new FormData();
       formData.append("u_email", email);
@@ -28,18 +30,26 @@ const useLoginForm = () => {
         method: "POST",
         body: formData
       });
-      const { token, token_expiration } = await response.json();
-      setCookie("token", token, token_expiration);
+      const data = await response.json();
 
-      window.location.href = "/";
+      if (!!data.data.token) {
+        setCookie("token", data.data.token, data.data.token_expiration);
+        window.location.href = "/";
+      }
+      else {
+        const message = data.msg || "Login failed";
+        alert(message);
+      }
+      setIsLoading(false);
     }
     catch (err: any) {
       console.error("LOGIN ERROR: ", err);
+      setIsLoading(false);
     }
   }
 
   return {
-    email, password,
+    email, password, isLoading,
     handleEmailChange, handlePasswordChange,
     handleSubmit
   }

@@ -1,11 +1,11 @@
-import { Box, Button, FormControl, FormLabel, Heading, Input, Stack } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormLabel, Heading, Input, Stack, Spinner } from '@chakra-ui/react'
 import Image from 'next/image'
 import React from 'react'
 import useLoginForm from './useLoginForm'
 
 const Login: React.FC = () => {
   const {
-    email, password,
+    email, password, isLoading,
     handleEmailChange, handlePasswordChange,
     handleSubmit
   } = useLoginForm();
@@ -84,6 +84,7 @@ const Login: React.FC = () => {
                 fontWeight="bold"
                 boxShadow="0 0 15px grey"
                 cursor="pointer"
+                isLoading={isLoading}
               >
                 LOGIN
               </Button>

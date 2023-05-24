@@ -7,9 +7,18 @@ import { MdArrowDropDown, MdPerson } from 'react-icons/md'
 
 const UserMenu: React.FC = () => {
 
-  const logout = () => {
-    deleteCookie("token");
-    window.location.href = "/login";
+  const logout = async () => {
+    try {
+      const HOST: string = process.env.NEXT_PUBLIC_API || "http://localhost/index.php";
+      const URL: string = HOST + "/auth/logout";
+
+      await fetch(URL);
+      deleteCookie("token");
+      window.location.href = "/login";
+    }
+    catch (err: any) {
+      console.error("LOGOUT ERROR: ", err);
+    }
   }
 
   return (
