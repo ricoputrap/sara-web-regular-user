@@ -5,7 +5,7 @@ import useLoginForm from './useLoginForm'
 
 const Login: React.FC = () => {
   const {
-    email, password, isLoading,
+    email, password,
     handleEmailChange, handlePasswordChange,
     handleSubmit
   } = useLoginForm();
@@ -84,7 +84,6 @@ const Login: React.FC = () => {
                 fontWeight="bold"
                 boxShadow="0 0 15px grey"
                 cursor="pointer"
-                isLoading={isLoading}
               >
                 LOGIN
               </Button>

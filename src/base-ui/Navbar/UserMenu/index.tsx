@@ -1,24 +1,30 @@
+import useLoading from '@/hooks/useLoading'
 import { deleteCookie } from '@/utils/cookie'
 import { Box, Button, Flex, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { GrPowerShutdown } from 'react-icons/gr'
 import { IoSwapHorizontal } from 'react-icons/io5'
 import { MdArrowDropDown, MdPerson } from 'react-icons/md'
 
 const UserMenu: React.FC = () => {
+  const { setLoading } = useLoading();
+  const router = useRouter();
 
   const logout = async () => {
     try {
+      setLoading(true);
       const HOST: string = process.env.NEXT_PUBLIC_API || "http://localhost/index.php";
       const URL: string = HOST + "/auth/logout";
 
       await fetch(URL);
       deleteCookie("token");
-      window.location.href = "/login";
+      router.replace("/login");
     }
     catch (err: any) {
       console.error("LOGOUT ERROR: ", err);
     }
+    setLoading(false);
   }
 
   return (
