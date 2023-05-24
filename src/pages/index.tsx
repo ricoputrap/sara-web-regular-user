@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
+import { NextPage } from 'next'
+import withAuth from '@/hoc/withAuth';
 
-export default function Home() {
+const Home: NextPage = () => {
   return (
     <>
       <Head>
@@ -17,3 +18,5 @@ export default function Home() {
     </>
   )
 }
+
+export default withAuth(Home);

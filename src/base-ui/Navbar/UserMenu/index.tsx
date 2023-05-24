@@ -1,3 +1,4 @@
+import { deleteCookie } from '@/utils/cookie'
 import { Box, Button, Flex, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import React from 'react'
 import { GrPowerShutdown } from 'react-icons/gr'
@@ -5,6 +6,12 @@ import { IoSwapHorizontal } from 'react-icons/io5'
 import { MdArrowDropDown, MdPerson } from 'react-icons/md'
 
 const UserMenu: React.FC = () => {
+
+  const logout = () => {
+    deleteCookie("token");
+    window.location.href = "/login";
+  }
+
   return (
     <Menu>
       <MenuButton
@@ -30,6 +37,7 @@ const UserMenu: React.FC = () => {
           paddingX="15px"
           height="30px"
           columnGap="4px"
+          onClick={logout}
         >
           <Flex justifyContent="center" alignItems="center" width="20px">
             <GrPowerShutdown />
