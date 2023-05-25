@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { NextPage } from 'next'
 import withAuth from '@/hoc/withAuth';
+import Dashboard from '@/components/dashboard';
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        Dashboard
+        <Dashboard />
       </main>
     </>
   )

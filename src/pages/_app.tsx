@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ChakraProvider theme={ theme }>
-      <Box color="black1" minHeight="100vh" paddingX="15px">
+      <Box color="black1" minHeight="100vh" paddingX="15px" background="bg">
         {!isLoginPage && <Navbar />}
         {isLoading && <Loading />}
         <Component {...pageProps} />
