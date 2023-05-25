@@ -34,20 +34,24 @@ const useLoginForm = () => {
         method: "POST",
         body: formData
       });
+
       const data = await response.json();
 
-      if (!!data.data.token) {
-        setCookie("token", data.data.token, data.data.token_expiration);
-        router.replace("/");
-      }
-      else {
-        const message = data.msg || "Login failed";
-        alert(message);
-      }
+      // login failed
+      if (!data.success)
+        throw new Error(data.msg);
+
+      // login success
+      const { token, token_expiration } = data.data;
+      setCookie("token", token, token_expiration);
+      router.replace("/");
+
       setLoading(false);
     }
     catch (err: any) {
-      console.error("LOGIN ERROR: ", err);
+      const errorMessage = err.message || "Login failed";
+      console.error("LOGIN ERROR: ", errorMessage);
+      alert(errorMessage);
       setLoading(false);
     }
   }
