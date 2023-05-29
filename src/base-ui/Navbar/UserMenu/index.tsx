@@ -17,7 +17,7 @@ const UserMenu: React.FC = () => {
       const HOST: string = process.env.NEXT_PUBLIC_API || "http://localhost/index.php";
       const URL: string = HOST + "/auth/logout";
 
-      await fetch(URL);
+      await fetch(URL, { method: "POST" });
       deleteCookie("token");
       router.replace("/login");
     }
