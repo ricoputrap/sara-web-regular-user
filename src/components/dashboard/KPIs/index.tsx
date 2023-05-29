@@ -1,42 +1,24 @@
-import { Box, Flex, Stack, Text } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import React from 'react'
-import useData from './hooks/useData'
+import useKPI from './hooks/useKPI'
 import { KPIItem } from './index.types'
+import KPIBox from './KPIBox';
 
 const KPIs: React.FC = () => {
-  const data: KPIItem[] = useData();
+  const { data, toggleActive } = useKPI();
 
   return (
     <div id="kpis">
       <Flex gap="20px" flexWrap="wrap" width="100%">
         {data.map((item: KPIItem) => (
-          <Box
+          <KPIBox
             key={item.id}
-            cursor="pointer"
-            backgroundColor="#FFF"
-            width="18%"
-            minWidth="160px"
-            maxW="180px"
-            boxShadow="1px 2px 3px #aaa"
-            padding="8px"
-            borderRadius="10px"
-          >
-            <Stack alignItems="center" rowGap="4px">
-              <Text
-                color="black1"
-                fontSize="40px"
-                margin="0"
-                lineHeight="44px"
-              >
-                { item.value }
-              </Text>
-              
-              <Box textAlign="center" marginTop="0 !important">
-                <Text color="black3" fontSize="17px">Pending</Text>
-                <Text color="blue">{item.name}</Text>
-              </Box>
-            </Stack>
-          </Box>
+            name={item.name}
+            value={item.value}
+            isActive={item.isActive}
+            isBlinking={item.isBlinking}
+            onClick={() => toggleActive(item.id)}
+          />
         ))}
       </Flex>
     </div>
