@@ -1,9 +1,25 @@
 import Head from 'next/head'
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import withAuth from '@/hoc/withAuth';
 import Dashboard from '@/components/dashboard';
 
-const Home: NextPage = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { token, token_expiration } = context.query;
+
+  return {
+    props: {
+      token: token as string || "",
+      token_expiration: token_expiration as string || ""
+    }
+  }
+}
+
+interface Props {
+  token: string;
+  token_expiration: number;
+}
+
+const Home: NextPage<Props> = (props) => {
   return (
     <>
       <Head>

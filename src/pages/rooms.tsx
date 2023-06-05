@@ -1,3 +1,4 @@
+import withAuth from '@/hoc/withAuth'
 import { NextPage } from 'next'
 import React from 'react'
 
@@ -7,4 +8,4 @@ const Rooms: NextPage = () => {
   )
 }
 
-export default Rooms
+export default withAuth(Rooms);
