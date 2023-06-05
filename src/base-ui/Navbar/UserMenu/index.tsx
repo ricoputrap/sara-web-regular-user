@@ -14,10 +14,6 @@ const UserMenu: React.FC = () => {
   const logout = async () => {
     try {
       setLoading(true);
-      const HOST: string = process.env.NEXT_PUBLIC_API || "http://localhost/index.php";
-      const URL: string = HOST + "/auth/logout";
-
-      await fetch(URL, { method: "POST" });
       deleteCookie("token");
       window.location.href = "http://localhost/index.php/admin/login_new"
     }

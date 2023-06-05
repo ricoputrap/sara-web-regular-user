@@ -17,7 +17,9 @@ const useInitData = () => {
       try {
         const response: KPIResponseItem[] = await API.initialize();
         const data: KPIItem[] = response.map((item: KPIResponseItem) => ({
-          ...item,
+          id: item.af_id,
+          name: item.af_name,
+          value: item.total,
           isActive: false,
           isBlinking: false
         }));

@@ -7,7 +7,7 @@ export type KPIItem = {
 }
 
 export type KPIResponseItem = {
-  id: number;
-  name: string;
-  value: number;
+  af_id: number;
+  af_name: string;
+  total: number;
 }
