@@ -4,7 +4,6 @@ import "@/assets/font/basier/stylesheet.css"
 import "@/assets/icon/flag-icon-css/css/flag-icon.min.css"
 import { Box, ChakraProvider, extendBaseTheme, Spinner } from '@chakra-ui/react'
 import Navbar from '@/base-ui/Navbar';
-import { useRouter } from 'next/router'
 import useLoading from '@/hooks/useLoading'
 import Loading from '@/base-ui/Loading'
 
@@ -27,16 +26,12 @@ const theme = extendBaseTheme({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
   const { isLoading } = useLoading();
-
-  // check if this page is Login page
-  const isLoginPage = router.pathname === "/login";
 
   return (
     <ChakraProvider theme={ theme }>
       <Box color="black1" minHeight="100vh" paddingX="15px" background="bg">
-        {!isLoginPage && <Navbar />}
+        <Navbar />
         {isLoading && <Loading />}
         <Component {...pageProps} />
       </Box>
