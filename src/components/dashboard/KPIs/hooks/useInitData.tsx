@@ -1,16 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import useLoading from '@/hooks/useLoading';
 import React, { useEffect } from 'react'
+import useGlobalData from '@/hooks/useGlobalData/store';
+import useLoading from '@/hooks/useLoading';
 import API from '../API';
 import { KPIItem, KPIResponseItem } from '../index.types';
 import useKPIStore from '../store';
 
 const useInitData = () => {
+  const hasDashboardInitialized = useGlobalData(state => state.hasDashboardInitialized);
+  const setHasDashboardInitialized = useGlobalData(state => state.setHasDashboardInitialized);
   const setData = useKPIStore(state => state.setData);
   const { setLoading } = useLoading();
   
    // initialize data
    useEffect(() => {
+    // no need to retrieve data from API everytime the page is opened
+    if (!!hasDashboardInitialized) return;
+
     const fetchData = async () => {
       setLoading(true);
       
@@ -25,6 +31,7 @@ const useInitData = () => {
           isBlinking: false
         }));
         setData(data);
+        setHasDashboardInitialized(true);
       }
       catch (error: any) {
         console.error("Dashboard KPI init error: ", error.message);
@@ -35,7 +42,7 @@ const useInitData = () => {
     };
 
     fetchData();
-  }, []);
+  }, [hasDashboardInitialized]);
 }
 
 export default useInitData
