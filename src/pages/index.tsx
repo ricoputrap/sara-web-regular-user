@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { GetServerSideProps, NextPage } from 'next'
-import withAuth from '@/hoc/withAuth';
 import Dashboard from '@/components/dashboard';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -35,5 +34,4 @@ const Home: NextPage<Props> = (props) => {
     </>
   )
 }
-
-export default withAuth(Home);
+export default Home;

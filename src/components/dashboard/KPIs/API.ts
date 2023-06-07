@@ -1,16 +1,17 @@
-import { getCookie } from "@/utils/cookie";
+import callFetch from "@/utils/callFetch";
 import { KPIResponseItem } from "./index.types";
-import axios from "axios";
 const HOST: string = process.env.NEXT_PUBLIC_API || "http://localhost/index.php/api/v2";
 
 const API = {
   initialize: async (): Promise<KPIResponseItem[]> => {
     const URL = `${HOST}/dashboard/getDashboardKPI`;
-    const token: string = getCookie("token") || "";
-    const headers = { 'Authorization': `Bearer ${token}` }; 
-    const response = await axios.get(URL, { headers });
-    const data: KPIResponseItem[] = response?.data?.data?.data || [];
 
+    const response = await callFetch(URL, {
+      method: "GET",
+      credentials: "include"
+    });
+
+    const data: KPIResponseItem[] = response?.data?.data || [];
     return data;
   }
 }

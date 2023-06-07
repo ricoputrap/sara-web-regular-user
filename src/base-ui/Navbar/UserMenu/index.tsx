@@ -1,11 +1,14 @@
 import useLoading from '@/hooks/useLoading'
-import { deleteCookie } from '@/utils/cookie'
+import callFetch from '@/utils/callFetch'
 import { Box, Button, Flex, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { GrPowerShutdown } from 'react-icons/gr'
 import { IoSwapHorizontal } from 'react-icons/io5'
 import { MdArrowDropDown, MdPerson } from 'react-icons/md'
+
+const LOGIN_URL: string = process.env.NEXT_PUBLIC_LOGIN_URL || "http://localhost/index.php/admin/login_new";
+const LOGOUT_URL: string = process.env.NEXT_PUBLIC_LOGOUT_URL || "http://localhost/index.php/admin/logout_new";
 
 const UserMenu: React.FC = () => {
   const { setLoading } = useLoading();
@@ -14,11 +17,13 @@ const UserMenu: React.FC = () => {
   const logout = async () => {
     try {
       setLoading(true);
-      deleteCookie("token");
-      window.location.href = "http://localhost/index.php/admin/login_new"
+
+      await callFetch(LOGOUT_URL, { credentials: "include" });
+      router.replace(LOGIN_URL);
     }
     catch (err: any) {
       console.error("LOGOUT ERROR: ", err);
+      alert("Logout error. Please refresh the page.");
     }
     setLoading(false);
   }
