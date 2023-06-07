@@ -13,6 +13,7 @@ const theme = extendBaseTheme({
   },
   colors: {
     bg: "#F6F7F8",
+    bgActive: "#E9EFF7",
 
     black0: "#000000",
     black1: "#15171A",

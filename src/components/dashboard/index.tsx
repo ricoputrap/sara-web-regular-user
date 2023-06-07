@@ -1,4 +1,5 @@
 import React from 'react'
+import Filters from './Filters';
 import KPIs from './KPIs'
 import useFiltersStore from './stores/useFiltersStore'
 
@@ -8,6 +9,8 @@ const Dashboard: React.FC = () => {
   return (
     <div id="page-dashboard">
       <KPIs />
+
+      <Filters />
 
       <strong>Request Families:</strong>
       {requestFamilies.map(item => (
