@@ -1,21 +1,22 @@
+import useLoading from '@/hooks/useLoading';
 import React from 'react'
+import DashboardSkeleton from './DashboardSkeleton';
 import Filters from './Filters';
 import KPIs from './KPIs'
-import useFiltersStore from './stores/useFiltersStore'
 
 const Dashboard: React.FC = () => {
-  const requestFamilies = useFiltersStore(state => state.requestFamilies);
+  const { isLoading } = useLoading();
 
   return (
     <div id="page-dashboard">
-      <KPIs />
-
-      <Filters />
-
-      <strong>Request Families:</strong>
-      {requestFamilies.map(item => (
-        <p key={ item }>{ item }</p>
-      ))}
+      {isLoading ? (
+        <DashboardSkeleton />
+      ) : (
+        <>
+          <KPIs />
+          <Filters />
+        </>
+      )}
     </div>
   )
 }
