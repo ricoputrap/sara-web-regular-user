@@ -15,7 +15,7 @@ const callFetch = async (
     
     if (!response.ok) {
       if (response.status == STATUS_CODE.UNAUTHORIZED) {
-        alert("You are not logged in. You have to login first.");
+        // alert("You are not logged in. You have to login first.");
         window.location.href = LOGIN_URL;
       }
       else {
