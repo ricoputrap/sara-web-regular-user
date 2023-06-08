@@ -15,8 +15,10 @@ const callFetch = async (
     
     if (!response.ok) {
       if (response.status == STATUS_CODE.UNAUTHORIZED) {
+        const message = response;
+        console.error("[callFetch.ts] ERROR: ", message);
         // alert("You are not logged in. You have to login first.");
-        window.location.href = LOGIN_URL;
+        // window.location.href = LOGIN_URL;
       }
       else {
         const message = `Request failed with status ${response.status}`;
