@@ -19,7 +19,6 @@ const useKPI = (): ReturnType => {
   const blinkingIDs: number[] = useKPIStore(state => state.blinkingIDs);
   const setIsBlinking = useKPIStore(state => state.setIsBlinking);
   const requestFamilies: number[] = useFiltersStore(state => state.requestFamilies);
-
   const computedData: KPIItem[] = useMemo(() => data.map(item => ({
     ...item,
     isActive: requestFamilies.includes(item.id),
