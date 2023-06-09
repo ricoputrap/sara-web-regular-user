@@ -1,15 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import useDebounceSync from '@/hooks/useDebounceSync';
 import { Flex, IconButton, Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 import React, { ChangeEvent, useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5';
 import { MdSearch } from 'react-icons/md'
-
+import useFiltersStore from '../../stores/useFiltersStore';
 
 const SearchBox: React.FC = () => {
+  const setSearchValue = useFiltersStore(state => state.setSearchValue);
   const [value, setValue] = useState("");
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value || "");
 
+  // update the search value in the
+  // global Filters Store after 300 ms
+  useDebounceSync(() => {
+    setSearchValue(value);
+  }, 300, [value]);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value || "");
+  const reset = () => {
+    setSearchValue("")
+    setValue("");
+  }
   const hasValue = value.length > 0;
-  const reset = () => setValue("");
 
   return (
     <div id="dashboard-search-box">

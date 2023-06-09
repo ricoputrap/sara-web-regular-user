@@ -3,18 +3,26 @@ import { create } from 'zustand';
 
 type State = {
   requestFamilies: number[];
+  searchValue: string;
 }
 
 type Actions = {
   setRequestFamilies: (requestFamilies: number[]) => void;
+  setSearchValue: (searchValue: string) => void;
   reset: () => void;
 }
 
-const useFiltersStore = create<State & Actions>(set => ({
+const initialState: State = {
   requestFamilies: [],
+  searchValue: "",
+}
+
+const useFiltersStore = create<State & Actions>(set => ({
+  ...initialState,
 
   setRequestFamilies: (requestFamilies: number[]) => set({ requestFamilies }),
-  reset: () => set({ requestFamilies: [] })
+  setSearchValue: (searchValue) => set({ searchValue }),
+  reset: () => set({ ...initialState })
 }));
 
 export default useFiltersStore
