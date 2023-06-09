@@ -3,6 +3,7 @@ import React from 'react'
 import DashboardSkeleton from './DashboardSkeleton';
 import Filters from './Filters';
 import KPIs from './KPIs'
+import ListOfRequests from './ListOfRequests';
 
 const Dashboard: React.FC = () => {
   const { isLoading } = useLoading();
@@ -15,6 +16,7 @@ const Dashboard: React.FC = () => {
         <>
           <KPIs />
           <Filters />
+          <ListOfRequests />
         </>
       )}
     </div>
