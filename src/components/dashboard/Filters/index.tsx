@@ -5,6 +5,8 @@ import ScheduledSwitch from './ScheduledSwitch'
 import SearchBox from './SearchBox'
 
 const Filters: React.FC = () => {
+  const isPropertySchedulingActive = true;
+
   return (
     <Box id="filters" marginTop="40px">
       <Flex flexWrap="wrap" gap="20px" justifyContent="space-between">
@@ -12,7 +14,7 @@ const Filters: React.FC = () => {
         <Flex alignItems="center" columnGap="40px">
           <RequestFamilyDropdown />
           <SearchBox />
-          <ScheduledSwitch />
+          {isPropertySchedulingActive && <ScheduledSwitch />}
         </Flex>
 
         {/* Right Filters */}
