@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import "@/assets/font/basier/stylesheet.css"
 import "@/assets/icon/flag-icon-css/css/flag-icon.min.css"
-import { Box, ChakraProvider, extendBaseTheme, Spinner } from '@chakra-ui/react'
+import { Box, ChakraProvider, extendBaseTheme } from '@chakra-ui/react'
 import Navbar from '@/base-ui/Navbar';
 import useLoading from '@/hooks/useLoading'
 import Loading from '@/base-ui/Loading'
