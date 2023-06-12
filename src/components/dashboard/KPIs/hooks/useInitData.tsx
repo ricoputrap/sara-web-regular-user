@@ -7,6 +7,7 @@ import { KPIItem, KPIResponseItem } from '../index.types';
 import useKPIStore from '../store';
 
 const useInitData = () => {
+  const propertyData = useGlobalData(state => state.propertyData);
   const hasDashboardInitialized = useGlobalData(state => state.hasDashboardInitialized);
   const setHasDashboardInitialized = useGlobalData(state => state.setHasDashboardInitialized);
   const setData = useKPIStore(state => state.setData);
@@ -14,6 +15,9 @@ const useInitData = () => {
   
    // initialize data
    useEffect(() => {
+    // load the data after property data has been retrieved & stored
+    if (!propertyData?.p_id || propertyData.p_id == -1) return; 
+
     // no need to retrieve data from API everytime the page is opened
     if (!!hasDashboardInitialized) return;
 
@@ -42,7 +46,7 @@ const useInitData = () => {
     };
 
     fetchData();
-  }, [hasDashboardInitialized]);
+  }, [propertyData, hasDashboardInitialized]);
 }
 
 export default useInitData

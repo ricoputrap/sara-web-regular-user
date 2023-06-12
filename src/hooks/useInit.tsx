@@ -27,7 +27,7 @@ const useInit = () => {
 
   useEffect(() => {
     // data has been loaded
-    if (propertyData.p_id != DEFAULT_NUM)
+    if (propertyData?.p_id != DEFAULT_NUM)
       return;
 
     const fetchData = async () => {
@@ -35,7 +35,7 @@ const useInit = () => {
       setPropertyData(data);
     }
     fetchData();
-  }, [propertyData]);
+  }, []);
 }
 
 export default useInit
