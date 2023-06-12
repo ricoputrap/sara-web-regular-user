@@ -1,6 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import RequestFamilyDropdown from './RequestFamilyDropdown'
+import RequestStatusFilterButton from './RequestStatusFilterButton'
 import ScheduledSwitch from './ScheduledSwitch'
 import SearchBox from './SearchBox'
 
@@ -22,7 +23,7 @@ const Filters: React.FC = () => {
           base: "100%",
           xl: "fit-content"
         }}>
-
+          <RequestStatusFilterButton />
         </Flex>
       </Flex>
     </Box>
