@@ -1,3 +1,4 @@
+import useGlobalData from '@/hooks/useGlobalData/store'
 import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import RequestFamilyDropdown from './RequestFamilyDropdown'
@@ -6,7 +7,8 @@ import ScheduledSwitch from './ScheduledSwitch'
 import SearchBox from './SearchBox'
 
 const Filters: React.FC = () => {
-  const isPropertySchedulingActive = true;
+  const propertyData = useGlobalData(state => state.propertyData);
+  const isPropertySchedulingActive = !!propertyData.scheduling;
 
   return (
     <Box id="filters" marginTop="40px">
