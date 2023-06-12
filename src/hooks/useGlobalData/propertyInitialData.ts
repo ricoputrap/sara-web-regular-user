@@ -1,9 +1,5 @@
-import { BOOLEAN_INT, TPropertyData } from "./property.types";
-
-const DEFAULT_NUM: number = -1;
-const DEFAULT_BOOLEAN_INT: BOOLEAN_INT = 0;
-const DEFAULT_STRING: string = "";
-const DEFAULT_DATETIME: string = "";
+import { DEFAULT_BOOLEAN_INT, DEFAULT_DATETIME, DEFAULT_NUM, DEFAULT_STRING } from "@/constants/defaults";
+import { TPropertyData } from "./property.types";
 
 const propertyInitialData: TPropertyData = {
   p_id: DEFAULT_NUM,

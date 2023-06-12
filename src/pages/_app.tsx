@@ -6,6 +6,7 @@ import { Box, ChakraProvider, extendBaseTheme } from '@chakra-ui/react'
 import Navbar from '@/base-ui/Navbar';
 import useLoading from '@/hooks/useLoading'
 import Loading from '@/base-ui/Loading'
+import useInit from '@/hooks/useInit'
 
 const theme = extendBaseTheme({
   fonts: {
@@ -30,6 +31,7 @@ const theme = extendBaseTheme({
 
 export default function App({ Component, pageProps }: AppProps) {
   const { isLoading } = useLoading();
+  useInit();
 
   return (
     <ChakraProvider theme={ theme }>

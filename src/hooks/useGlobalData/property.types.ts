@@ -1,4 +1,4 @@
-export type BOOLEAN_INT = 0 | 1;
+import { BOOLEAN_INT } from "@/constants/defaults";
 
 export type TPropertyData = {
   p_id: number;
