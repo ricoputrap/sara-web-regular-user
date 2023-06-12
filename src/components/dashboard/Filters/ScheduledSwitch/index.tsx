@@ -2,11 +2,10 @@
 import Switch from '@/base-ui/Switch';
 import { Flex, Text } from '@chakra-ui/react';
 import React from 'react'
-import useFiltersStore from '../../stores/useFiltersStore';
+import useSwitch from './useSwitch';
 
 const ScheduledSwitch: React.FC = () => {
-  const isScheduled = useFiltersStore(state => state.isScheduled);
-  const toggleScheduled = useFiltersStore(state => state.toggleScheduled);
+  const { isScheduled, toggleScheduled } = useSwitch();
   
   return (
     <div id="dashboard-scheduled-switch">
