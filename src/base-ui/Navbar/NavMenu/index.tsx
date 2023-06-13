@@ -7,7 +7,7 @@ const NavMenu: React.FC = () => {
     <Flex alignItems="center">
       <NavLink href="/">Dashboard</NavLink>
       <NavLink href="/rooms">Rooms</NavLink>
-      <NavLink href="/schedule">Schedule</NavLink>
+      <NavLink href="/schedules">Schedule</NavLink>
       <NavLink href="/report">Report</NavLink>
       
       <Box
