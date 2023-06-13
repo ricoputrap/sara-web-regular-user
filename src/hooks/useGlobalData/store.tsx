@@ -2,22 +2,38 @@ import { create } from "zustand";
 import { TPropertyData } from "./property.types";
 import propertyInitialData from "./propertyInitialData";
 
+type TPage = "dashboard" | "rooms" | "report" | "schedules";
+type THasDataInit = {
+  dashboard: boolean;
+  rooms: boolean;
+  report: boolean;
+  schedules: boolean;
+}
+
 type State = {
-  hasDashboardInitialized: boolean;
+  hasDataInitialized: THasDataInit;
   propertyData: TPropertyData;
 }
 
 type Actions = {
-  setHasDashboardInitialized: (value: boolean) => void;
+  setHasDataInitialized: (page: TPage, value: boolean) => void;
   setPropertyData: (propertyData: TPropertyData) => void;
 }
 
 const useGlobalData = create<State & Actions>(set => ({
-  hasDashboardInitialized: false,
-  propertyData: propertyInitialData,
-  setHasDashboardInitialized(value) {
-      set({ hasDashboardInitialized: value });
+  hasDataInitialized: {
+    dashboard: false,
+    rooms: false,
+    report: false,
+    schedules: false
   },
+  propertyData: propertyInitialData,
+  setHasDataInitialized: (page, value) => set(prev => ({
+    hasDataInitialized: {
+      ...prev.hasDataInitialized,
+      [page]: value
+    }
+  })),
   setPropertyData: (propertyData) => set({ propertyData })
 }));
 

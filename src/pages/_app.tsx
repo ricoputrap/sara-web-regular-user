@@ -6,7 +6,7 @@ import { Box, ChakraProvider, extendBaseTheme } from '@chakra-ui/react'
 import Navbar from '@/base-ui/Navbar';
 import useLoading from '@/hooks/useLoading'
 import Loading from '@/base-ui/Loading'
-import useInit from '@/hooks/useInit'
+import useInit from '@/hooks/useInit/useInit'
 
 const theme = extendBaseTheme({
   fonts: {

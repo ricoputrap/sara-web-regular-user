@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import useFiltersStore from "../../stores/useFiltersStore";
 import { KPIItem } from "../index.types";
 import useKPIStore from "../store";
-import useInitData from "./useInitData";
 import useToggleActive from "./useToggleActive";
 
 interface ReturnType {
@@ -12,7 +11,6 @@ interface ReturnType {
 }
 
 const useKPI = (): ReturnType => {
-  useInitData();
   const toggleActive = useToggleActive();
 
   const data: KPIItem[] = useKPIStore(state => state.data);
