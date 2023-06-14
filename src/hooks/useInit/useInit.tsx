@@ -42,8 +42,16 @@ const useInit = () => {
           // init data dashboard
           if (!hasDataInitialized.dashboard) {
             setLoading(true);
-            const { kpi }: TDashboardInitialData = await API.initDashboard();
+            const {
+              kpi,
+              pendingRequests,
+              supportingData: { requestFamilies, locations }
+            }: TDashboardInitialData = await API.initDashboard();
             const kpiData: KPIItem[] = prepareDataDashboardKPI(kpi);
+
+            /** @todo prepare data pending requests */
+            /** @todo compute lookup request families */
+            /** @todo compute lookup locations */
 
             setDashboardKPIData(kpiData);
             setHasDataInitialized("dashboard", true); 

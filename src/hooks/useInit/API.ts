@@ -1,19 +1,26 @@
 import { KPIResponseItem } from "@/components/dashboard/KPIs/index.types";
 import callFetch from "@/utils/callFetch";
 import { TPropertyData } from "../useGlobalData/property.types";
+import { TLocationItemResponse, TRequestFamilyItemResponse, TRequestItemResponse } from "./dashboard.types";
 
 const HOST: string = process.env.NEXT_PUBLIC_API || "http://localhost/index.php/api/v2";
 
 export type TDashboardInitialData = {
   kpi: KPIResponseItem[];
-  pendingRequests: any[];
-  supportingData: any;
+  pendingRequests: TRequestItemResponse[];
+  supportingData: {
+    requestFamilies: TRequestFamilyItemResponse[];
+    locations: TLocationItemResponse[];
+  };
 }
 
 const defaultDashboardInitialData: TDashboardInitialData = {
   kpi: [],
   pendingRequests: [],
-  supportingData: {}
+  supportingData: {
+    requestFamilies: [],
+    locations: []
+  }
 }
 
 const API = {
