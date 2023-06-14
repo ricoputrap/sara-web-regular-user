@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 import React from 'react'
 import useKPI from './hooks/useKPI'
-import { KPIItem } from './index.types'
+import { KPIItem } from '../stores/useKPIStore/index.types'
 import KPIBox from './KPIBox';
 
 const KPIs: React.FC = () => {

@@ -1,4 +1,4 @@
-import { KPIResponseItem } from "@/components/dashboard/KPIs/index.types";
+import { KPIResponseItem } from "@/components/dashboard/stores/useKPIStore/index.types";
 import callFetch from "@/utils/callFetch";
 import { TPropertyData } from "../useGlobalData/property.types";
 import { TLocationItemResponse, TRequestFamilyItemResponse, TRequestItemResponse } from "./dashboard.types";

@@ -2,8 +2,8 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router';
 
-import { KPIItem } from '@/components/dashboard/KPIs/index.types';
-import useKPIStore from '@/components/dashboard/KPIs/store';
+import { KPIItem } from '@/components/dashboard/stores/useKPIStore/index.types';
+import useKPIStore from '@/components/dashboard/stores/useKPIStore';
 import { DEFAULT_NUM } from '@/constants/defaults';
 import ROUTES from '@/constants/routes';
 import { TPropertyData } from '../useGlobalData/property.types';

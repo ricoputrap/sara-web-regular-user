@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import useFiltersStore from "../../stores/useFiltersStore";
-import { KPIItem } from "../index.types";
-import useKPIStore from "../store";
+import { KPIItem } from "../../stores/useKPIStore/index.types";
+import useKPIStore from "../../stores/useKPIStore";
 import useToggleActive from "./useToggleActive";
 
 interface ReturnType {

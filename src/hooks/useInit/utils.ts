@@ -1,4 +1,4 @@
-import { KPIItem, KPIResponseItem } from "@/components/dashboard/KPIs/index.types";
+import { KPIItem, KPIResponseItem } from "@/components/dashboard/stores/useKPIStore/index.types";
 
 export const prepareDataDashboardKPI = (data: KPIResponseItem[]) => {
   const result: KPIItem[] = data.map(item => ({
