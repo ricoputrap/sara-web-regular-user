@@ -1,4 +1,4 @@
-import MultiSwitch from '@/base-ui/MultiSwitch';
+import MultiSwitch from '@/components/reusables/MultiSwitch';
 import React from 'react'
 import useMultiSwitch from './useMultiSwitch';
 

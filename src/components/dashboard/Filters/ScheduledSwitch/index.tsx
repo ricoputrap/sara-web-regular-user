@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Switch from '@/base-ui/Switch';
+import Switch from '@/components/reusables/Switch';
 import { Flex, Text } from '@chakra-ui/react';
 import React from 'react'
 import useSwitch from './useSwitch';
